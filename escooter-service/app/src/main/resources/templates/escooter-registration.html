@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>EScooterSystem - EScooter Registration</h2>
-<form th:action="@{/escooters/}" th:object="${escooter}" method="post">
+<form th:action="@{/api/escooters}" th:object="${escooter}" method="post">
     <p>
         <label for="id">EScooter ID:</label><br>
         <input type="text" id="id" th:field="*{id}" value="escooter-01" th:placeholder="escooter-01"><br><br>

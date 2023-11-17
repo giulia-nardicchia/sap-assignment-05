@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/escooters")
+@RequestMapping("/api/escooters")
 @RestController
 public class EScooterAPI {
 
     @Autowired
     private DataService<EScooter, String> escooterService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<EScooter>> getAllEScooters() {
         return ResponseEntity.ok().body(this.escooterService.getAllResources());
     }
@@ -28,7 +28,7 @@ public class EScooterAPI {
         return ResponseEntity.ok().body(this.escooterService.getResourceById(id));
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<EScooter> createEScooter(EScooter escooter) throws IdAlreadyExistingException, NotYetRegisteredException {
         return ResponseEntity.ok().body(this.escooterService.createResource(escooter));
     }

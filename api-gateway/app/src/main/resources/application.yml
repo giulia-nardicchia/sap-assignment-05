@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: escooter-service
+          uri: ${ESCOOTER_ROUTE_URI:http://localhost:8081}
+          predicates:
+            - Path=/escooters/**
+          filters:
+            - PrefixPath=/api
