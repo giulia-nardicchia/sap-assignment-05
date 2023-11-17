@@ -1,14 +1,14 @@
 server:
-    port: 8081
-    error:
-        whitelabel:
-            enabled: false
+  port: 8081
+#  error:
+#    whitelabel:
+#      enabled: false
 spring:
-    application:
-        name: escooter-service
-    mvc:
-        view:
-            prefix: /templates/
-            suffix: .html
-    profiles:
-        active: prod
+  application:
+    name: escooter-service
+  profiles:
+    active: prod
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html

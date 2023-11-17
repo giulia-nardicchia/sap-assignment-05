@@ -1,6 +1,6 @@
 spring:
-    data:
-        mongodb:
-            database: EScooterServiceDB
-            host: localhost
-            port: 27017
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: EScooterServiceDB

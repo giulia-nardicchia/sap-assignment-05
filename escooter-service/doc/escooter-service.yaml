@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: E-scooter microservice
+  description: |-
+    This is the API of the E-scooter microservice
+  contact:
+    name: Giulia Nardicchia
+    email: giulia.nardicchia@studio.unibo.it
+  version: 0.1.0
+servers:
+  - url: http://localhost:8081/api
+tags:
+  - name: e-scooter
+    description: Operations about e-scooters
+paths:
+  /escooters:
+    get:
+      tags:
+        - e-scooter
+      summary: Get all EScooters
+      operationId: getAllEScooters
+      responses:
+        '200':
+          description: A list of EScooters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EScooter'
+        '500':
+          description: service internal error
+    post:
+      tags:
+        - e-scooter
+      summary: Create a new EScooter
+      operationId: createEScooter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EScooter'
+      responses:
+        '200':
+          description: Created EScooter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EScooter'
+        '500':
+          description: Internal Server Error
+  /escooters/{id}:
+    get:
+      tags:
+        - e-scooter
+      summary: Get EScooter by ID
+      operationId: getEScooterById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the EScooter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: EScooter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EScooter'
+        '500':
+          description: service internal error
+    put:
+      tags:
+        - e-scooter
+      summary: Update an EScooter by ID
+      operationId: updateEScooter
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the EScooter
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EScooter'
+      responses:
+        '200':
+          description: Updated EScooter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EScooter'
+    delete:
+      tags:
+        - e-scooter
+      summary: Delete an EScooter by ID
+      operationId: deleteEScooter
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the EScooter
+          schema:
+            type: string
+      responses:
+        '200':
+          description: EScooter deleted successfully
+        '500':
+          description: service internal error
+components:
+  schemas:
+    EScooter:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: escooter-01
+        state:
+          type: string
+          enum:
+            - AVAILABLE
+            - IN_USE
+            - MAINTENANCE
+          example: AVAILABLE
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+          example: null
