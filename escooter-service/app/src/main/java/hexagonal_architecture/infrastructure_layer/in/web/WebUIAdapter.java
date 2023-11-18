@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/views")
+@RequestMapping("/escooter-registration")
 public class WebUIAdapter {
 
-    @GetMapping("/escooter")
+    @GetMapping("")
     public String eScooterRegistration(Model model) {
         EScooter escooter = new EScooter();
         model.addAttribute("escooter", escooter);

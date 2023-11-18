@@ -32,7 +32,7 @@ public class EScooterAPI {
 
     @CrossOrigin(origins = "*")
     @PostMapping("")
-    public ResponseEntity<EScooter> createEScooter(EScooter escooter) throws IdAlreadyExistingException, NotYetRegisteredException {
+    public ResponseEntity<EScooter> createEScooter(@RequestBody EScooter escooter) throws IdAlreadyExistingException, NotYetRegisteredException {
         return ResponseEntity.ok().body(this.escooterService.createResource(escooter));
     }
 

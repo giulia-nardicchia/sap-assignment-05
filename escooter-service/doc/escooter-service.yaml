@@ -40,7 +40,12 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EScooter'
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: string
       responses:
         '200':
           description: Created EScooter
